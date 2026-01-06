@@ -1,250 +1,196 @@
-# Meeting Coordination System
+⚠️ УСТАРЕВШИЙ ПРОЕКТ - Больше не поддерживается
+О проекте
+Этот репозиторий содержит архивный код системы отслеживания локаций и координации встреч, разработанной в 2025 году. Проект использовался для планирования безопасных точек встречи и управления координатами.
+Статус: 🔴 Архивирован (Последнее обновление: Август 2024)
 
-⚠️ **DEPRECATED PROJECT** - No longer maintained
+⚠️ ПРЕДУПРЕЖДЕНИЕ
+Этот репозиторий случайно остался публичным и содержит конфиденциальные данные конфигурации, которые должны были быть удалены. Включает:
 
-## About
+Географические координаты
+API учётные данные (просрочены)
+Строки подключения к базе данных
+Данные о местах встреч
+Конфигурационные файлы с жёстко прописанными значениями
 
-This repository contains archived code from a location tracking and meeting coordination system developed in 2025. The project was used for secure meeting point planning and coordinate management.
+Это не лучшая практика безопасности. НЕ используйте этот код в продакшене.
 
-**Status:** 🔴 Archived (Last updated: August 2024)
+Описание файлов
+config.py
+Конфигурационный файл содержит:
 
----
+API ключи для картографических сервисов (Google Maps, Mapbox)
+Учётные данные базы данных
+Координаты мест встреч
+Настройки времени и даты
+Настройки безопасности (устаревшие)
 
-## ⚠️ WARNING
+⚠️ Содержит жёстко прописанные учётные данные - НЕ ИСПОЛЬЗОВАТЬ
+Meeting.txt
+Текстовый файл с:
 
-This repository was accidentally left public and contains sensitive configuration data that should have been removed. It includes:
-
-- Geographic coordinates
-- API credentials (expired)
-- Database connection strings
-- Meeting location data
-- Configuration files with hardcoded values
-
-**This is not a security best practice. Do NOT use this code in production.**
-
----
-
-
-## Files Description
-
-### `config.py`
-Configuration file containing:
-- API keys for mapping services (Google Maps, Mapbox)
-- Database credentials
-- Meeting location coordinates
-- Time and date settings
-- Security settings (outdated)
-
-⚠️ **Contains hardcoded credentials - DO NOT USE**
-
-### `Meeting.txt`
-Plain text file with:
-- Primary meeting point coordinates
-- Backup location coordinates  
-- Meeting time and date
-- Access codes and security protocols
+Координатами основной точки встречи
+Координатами запасных локаций
+Временем и датой встречи
+Кодами доступа и протоколами безопасности
 
 
-## Data Format
+Формат данных
+Формат координат
+Координаты хранятся в десятичном формате градусов:
+Широта: XX.XXXXX (Север)
+Долгота: XX.XXXXX (Восток)
+Формат даты/времени
+Дата: ГГГГ-ММ-ДД
+Время: ЧЧ:ММ (24-часовой формат)
+Часовой пояс: Asia/Almaty (GMT+6)
 
-### Coordinates Format
-Coordinates are stored in decimal degrees format:
-```
-Latitude: XX.XXXXX (North)
-Longitude: XX.XXXXX (East)
-```
+Использование (Историческое)
+Эта система была разработана для:
 
-### Date/Time Format
-```
-Date: YYYY-MM-DD
-Time: HH:MM (24-hour format)
-Timezone: Asia/Almaty (GMT+6)
-```
+Хранения и управления координатами мест встреч
+Предоставления данных о запасных локациях
+Кодирования конфиденциальной географической информации
+Содействия безопасной координации встреч
 
----
+Пример использования:
+pythonfrom config import get_coordinates
 
-## Usage (Historical)
-
-This system was designed to:
-1. Store and manage meeting location coordinates
-2. Provide backup location data
-3. Encode sensitive geographic information
-4. Facilitate secure meeting coordination
-
-**Example workflow:**
-```python
-from config import get_coordinates
-
-# Get meeting coordinates
+# Получить координаты встречи
 lat, lon = get_coordinates()
-print(f"Meeting at: {lat}, {lon}")
-```
+print(f"Встреча в: {lat}, {lon}")
 
----
+Проблемы безопасности
+Известные уязвимости ⚠️
 
-## Security Issues
+Раскрытые API ключи
 
-### Known Vulnerabilities ⚠️
+API ключ Google Maps в открытом виде
+Токен Mapbox не ротирован
+Пароли базы данных жёстко прописаны
 
-1. **Exposed API Keys**
-   - Google Maps API key in plaintext
-   - Mapbox token not rotated
-   - Database passwords hardcoded
 
-2. **No Encryption**
-   - Coordinates stored in plaintext
-   - Configuration files not encrypted
-   - No use of environment variables
+Отсутствие шифрования
 
-3. **Public Repository**
-   - Sensitive data committed to public repo
-   - .gitignore added after sensitive commits
-   - Commit history contains credentials
+Координаты хранятся в открытом виде
+Конфигурационные файлы не зашифрованы
+Не используются переменные окружения
 
-4. **Hardcoded Values**
-   - Database connection strings
-   - API endpoints
-   - Meeting locations and times
 
----
+Публичный репозиторий
 
-## Why This Repository Exists
+Конфиденциальные данные закоммичены в публичный репо
+.gitignore добавлен после коммитов с секретами
+История коммитов содержит учётные данные
 
-This is an **archived educational example** of what NOT to do with sensitive data:
 
-❌ Don't commit API keys to repositories  
-❌ Don't store passwords in code  
-❌ Don't hardcode coordinates and sensitive data  
-❌ Don't leave public repos with confidential info  
-❌ Don't forget to use .env files  
+Жёстко прописанные значения
 
-✅ Use environment variables  
-✅ Encrypt sensitive data  
-✅ Use secret management tools  
-✅ Follow security best practices  
-✅ Rotate credentials regularly  
+Строки подключения к базе данных
+API endpoints
+Места и времена встреч
 
----
 
-## Technologies Used
 
-- **Python 3.8+** - Core language
-- **JSON** - Data storage format
-- **Base64** - Basic encoding (not encryption!)
-- **PostgreSQL** - Database (credentials exposed)
 
----
+Почему существует этот репозиторий
+Это архивный образовательный пример того, что НЕ нужно делать с конфиденциальными данными:
+❌ Не коммитить API ключи в репозитории
+❌ Не хранить пароли в коде
+❌ Не прописывать координаты и конфиденциальные данные жёстко
+❌ Не оставлять публичные репо с конфиденциальной информацией
+❌ Не забывать использовать .env файлы
+✅ Использовать переменные окружения
+✅ Шифровать конфиденциальные данные
+✅ Использовать инструменты управления секретами
+✅ Следовать лучшим практикам безопасности
+✅ Регулярно ротировать учётные данные
 
-## Installation (Don't Actually Do This)
+Используемые технологии
 
-```bash
-# Clone the repository
+Python 3.8+ - Основной язык
+JSON - Формат хранения данных
+Base64 - Базовое кодирование (не шифрование!)
+PostgreSQL - База данных (учётные данные раскрыты)
+
+
+Установка (На самом деле не делайте этого)
+bash# Клонировать репозиторий
 git clone https://github.com/KINGSPOONKIBAB/shadowtrade-coords.git
 
-# Install dependencies (there are none because I'm bad at this)
+# Установить зависимости (их нет, потому что я плох в этом)
 cd shadowtrade-coords
 
-# Run configuration
+# Запустить конфигурацию
 python config.py
 
-# ⚠️ WARNING: This will expose all credentials
-```
+# ⚠️ ПРЕДУПРЕЖДЕНИЕ: Это раскроет все учётные данные
 
----
+Вклад
+Этот проект АРХИВИРОВАН и больше не принимает вклады.
+Если вы нашли этот репозиторий и заметили проблемы безопасности - да, я знаю. Уже слишком поздно.
 
-## Contributing
+Лицензия
+У этого проекта нет лицензии, потому что его вообще не должно существовать.
+Используйте на свой риск. Вообще-то, не используйте вообще.
 
-This project is **ARCHIVED** and no longer accepts contributions.
+Контакты
+По вопросам безопасности: Не беспокойтесь, ущерб уже нанесён
+GitHub: @KINGSPOONKIBAB
 
-If you found this repository and noticed the security issues - yes, I know. It's too late now.
+Извлечённые уроки
 
----
+Всегда используйте .gitignore ДО коммита
+Никогда не коммитьте конфиденциальные данные
+Используйте переменные окружения для учётных данных
+Регулярно ротируйте API ключи
+Не будьте как я
 
-## License
 
-This project has no license because it shouldn't exist in the first place.
+История изменений
+v1.2.0 (2024-08-15) - Финальное обновление
 
-Use at your own risk. Actually, don't use it at all.
+Добавлены координаты основного места встречи
+Обновлена конфигурация с API ключами (упс)
+"Исправлены" строки подключения к базе данных (стало хуже)
+Добавлен этот README (слишком мало, слишком поздно)
 
----
+v1.1.0 (2024-07-20)
 
-## Contact
+Начальная настройка конфигурации
+Добавлены структуры данных локаций
+Случайно закоммичены учётные данные
 
-For security concerns: ~~Don't bother, damage is done~~
+v1.0.0 (2024-07-15)
 
-GitHub: [@KINGSPOONKIBAB](https://github.com/KINGSPOONKIBAB)
+Инициализация проекта
+Создана базовая структура
 
----
 
-## Lessons Learned
+FAQ
+В: Почему API ключи раскрыты в этом репо?
+О: Были совершены ошибки.
+В: Должен ли я использовать этот код?
+О: Абсолютно нет.
+В: Могу ли я форкнуть этот проект?
+О: Можете, но зачем?
+В: Эти данные настоящие?
+О: 🤷 Это вам предстоит выяснить.
+В: Куда указывают координаты?
+О: Проверьте файлы. Всё там. К сожалению.
 
-1. Always use `.gitignore` BEFORE committing
-2. Never commit sensitive data
-3. Use environment variables for credentials
-4. Rotate API keys regularly
-5. Don't be like me
+Отказ от ответственности
+Этот репозиторий архивирован и содержит исторические данные из 2024 года. Все API ключи следует считать скомпрометированными. Учётные данные базы данных просрочены. Места встреч могут быть уже неактуальны.
+НЕ ИСПОЛЬЗУЙТЕ ЭТОТ КОД В ЛЮБОЙ ПРОДАКШН СРЕДЕ.
+Это поучительная история о плохих практиках безопасности.
 
----
+Благодарности
+Спасибо:
 
-## Changelog
+Никому, потому что это позорно
+Моему прошлому себе за небрежность
+GitHub за хостинг моих ошибок навсегда
 
-### v1.2.0 (2023-08-15) - Final Update
-- Added coordinates for primary meeting location
-- Updated configuration with API keys (oops)
-- "Fixed" database connection strings (made worse)
-- Added this README (too little, too late)
 
-### v1.1.0 (2023-07-20)
-- Initial configuration setup
-- Added location data structures
-- Committed credentials by mistake
-
-### v1.0.0 (2023-07-15)
-- Project initialization
-- Basic structure created
-
----
-
-## FAQ
-
-**Q: Why are API keys exposed in this repo?**  
-A: Mistakes were made.
-
-**Q: Should I use this code?**  
-A: Absolutely not.
-
-**Q: Can I fork this project?**  
-A: You can, but why would you?
-
-**Q: Is this data real?**  
-A: 🤷 That's for you to find out.
-
-**Q: Where are the coordinates pointing to?**  
-A: Check the files. It's all there. Unfortunately.
-
----
-
-## Disclaimer
-
-This repository is archived and contains historical data from 2023. All API keys should be considered compromised. Database credentials are expired. Meeting locations may no longer be relevant.
-
-**DO NOT USE THIS CODE IN ANY PRODUCTION ENVIRONMENT.**
-
-This is a cautionary tale about poor security practices.
-
----
-
-## Acknowledgments
-
-Thanks to:
-- Nobody, because this is embarrassing
-- My past self for being careless
-- GitHub for hosting my mistakes forever
-
----
-
-**Last Updated:** August 15, 2024  
-**Status:** Deprecated / Abandoned  
-**Security Level:** 💀 Compromised
-
----
+Последнее обновление: 15 августа 2024
+Статус: Устаревший / Заброшенный
+Уровень безопасности: 💀 Скомпрометирован
